@@ -237,7 +237,7 @@ class Orders:
             'amount': amount
         }
 
-        url = get_base_url(env=env) + f'/orders/{order_id}'
+        url = get_base_url(env=env) + f'/orders/{order_id}/refunds'
         response = requests.post(url, headers=headers, data=data, auth=(get_api_key(env=env), ''))
         return response.json() if res_format == 'json' else response
 
@@ -497,8 +497,8 @@ class Payments:
     def netbanking(cls,
                    order_id,
                    merchant_id,
+                   payment_method,
                    payment_method_type='NB',
-                   payment_method=None,
                    redirect_after_payment=True,
                    format='json',
                    env=ENV,
