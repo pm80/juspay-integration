@@ -6,4 +6,4 @@ drf-yasg
 django-extensions
 jupyter
 ipython
-django-extensions
+drf-spectacular
