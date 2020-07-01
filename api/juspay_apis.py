@@ -405,7 +405,7 @@ class Card:
     @classmethod
     def card_info(cls,
                   cardbins,
-                  merchant_id,
+                  merchant_id='wakefit',
                   option_check_direct_otp_support=True,
                   option_check_mandate_support=True,
                   env=ENV,
@@ -417,8 +417,8 @@ class Card:
         )
 
         url = get_base_url(env=env) + f'/cardbins/{cardbins}'
-        response = requests.get(url, params=params, auth=(get_api_key(env=env), ''))
-        return response.json() if res_format == 'json' else response
+        response = requests.post(url, params=params, auth=(get_api_key(env=env), '')) # fixme post
+        return response.json() if res_format == 'json' else response # todo sent status
 
     @classmethod
     def bin_list(cls,
